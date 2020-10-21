@@ -1,0 +1,27 @@
+.index-container {
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .search-form {
+      width: 100%;
+      max-width: 688px;
+      .image-search-input-container {
+        width: 100%;
+        max-width: 600px;
+      }
+    }
+  }
+
+  .image-results-container {
+    padding-top: 50px;
+    flex-wrap: wrap;
+    img {
+      max-height: 265px;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flashcard Images</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= favicon_link_tag asset_path('favicon.ico') %>
+  </head>
+  <body>
+    <div class="page-container">
+      <% if flash[:alert] %>
+        <div class="flash notification is-danger" data-controller="flash">
+          <button class="delete" data-action="click->flash#close"></button>
+          <p class="notice"><%= flash[:alert] %></p>
+        </div>
+      <% elsif flash[:notice] %>
+        <div class="flash notification is-warning" data-controller="flash">
+          <button class="delete" data-action="click->flash#close"></button>
+          <p class="notice"><%= flash[:notice] %></p>
+        </div>
+      <% elsif flash[:success] %>
+        <div class="flash notification is-success" data-controller="flash">
+          <button class="delete" data-action="click->flash#close"></button>
+          <p class="notice"><%= flash[:success] %></p>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<div class="index-container">
+  <div class="form-container">
+    <%= form_with(url: search_path, method: "get", local: true, class: "search-form") do |f| %>
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <%= f.select :provider, options_for_select(["Unsplash", "Pixabay"], params[:provider] || "Unsplash") %>
+          </span>
+        </p>
+        <div class="control image-search-input-container">
+          <%= f.text_field :q, value: @previous_query, class: "input image-search-input", placeholder: "Search for an image by keyword...", autocomplete: "off" %>
+        </div>
+        <div class="control">
+          <%= f.submit "Search", class: "button is-info" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="image-results-container">
+    <%= render(partial: 'image_search/image', collection: @images, as: :image) %>
+  </div>
+</div>
