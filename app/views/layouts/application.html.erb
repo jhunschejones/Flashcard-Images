@@ -12,6 +12,39 @@
     <%#= favicon_link_tag asset_path('favicon.ico') %>
   </head>
   <body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" data-controller="main-nav">
+      <div class="navbar-brand">
+        <%= link_to(root_path, class: "navbar-item") do %>
+          <%#= image_tag("logo_120.png", class: "site-logo-image") %>
+          <span class="navbar-title has-text-weight-semibold">Flashcard Images</span>
+        <% end %>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-nav.mainNavBurger" data-action="click->main-nav#toggle">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu main-nav-menu" data-target="main-nav.mainNavMenu">
+        <div class="navbar-start main-nav-items">
+          <%= link_to(search_path, class: "navbar-item has-text-weight-bold") do %>
+            <span class="icon is-small">
+              <i class="fas fa-search"></i>
+            </span>
+            <span>Image Search</span>
+          <% end %>
+        </div>
+
+        <div class="navbar-end"></div>
+        <% if @current_user.present? %>
+          <%= link_to('Log out', logout_path, method: :delete, class: "navbar-item button is-small is-danger is-outlined logout-button") %>
+        <% else %>
+          <%= link_to('Log in', login_path, class: "navbar-item button is-small is-success login-button") %>
+        <% end %>
+      </div>
+    </nav>
+
     <div class="page-container">
       <% if flash[:alert] %>
         <div class="flash notification is-danger" data-controller="flash">
