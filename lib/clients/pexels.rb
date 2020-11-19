@@ -9,7 +9,7 @@ module Clients
 
     class << self
       def search(query, page: PAGE_NUMBER, result_count: PER_PAGE_RESULT_COUNT, locale: LOCALE)
-        Rails.cache.fetch("query:#{query}:provider:#{PEXELS_PROVIDER}:page:#{page}:result_count:#{result_count}:locale#{locale}") do
+        Rails.cache.fetch("query:#{query}:provider:#{PEXELS_PROVIDER}:page:#{page}:result_count:#{result_count}:locale:#{locale}") do
           ::Pexels::Client.new.photos
             .search(query, page: page, per_page: result_count, locale: locale)
             .photos
