@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Always use a cache in development to save API calls
-  config.cache_store = :local_store
+  config.cache_store = :null_store
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

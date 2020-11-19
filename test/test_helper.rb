@@ -24,3 +24,13 @@ end
 def login_as(user)
   post login_path, params: { email: user.email, password: "secret" }
 end
+
+def stub_const(klass, const, value)
+  old = klass.const_get(const)
+  klass.send(:remove_const, const)
+  klass.const_set(const, value)
+  yield
+ensure
+  klass.send(:remove_const, const)
+  klass.const_set(const, old)
+end

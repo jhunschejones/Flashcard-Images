@@ -12,12 +12,16 @@
   }
 }
 
+.navbar-end {
+  min-width: 120px;
+}
 .logout-button,
 .login-button {
-  max-width: 70px;
-  margin: 10px 12px 8px 22px;
   display: flex;
-  @media screen and (min-width: $navbar-breakpoint) {
-    margin-left: 60px;
+  max-width: 72px;
+  margin: 12px 12px 8px 22px;
+  @media screen and (max-width: $navbar-breakpoint) {
+    margin-top: 5px;
+    margin-left: 16px;
   }
 }

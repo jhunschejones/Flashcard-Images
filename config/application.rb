@@ -16,6 +16,9 @@ module FlashcardImages
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Add all files in `/lib` directory to the load path for require statments
+    config.autoload_paths += %W(#{Rails.root}/lib)
+
     # https://thoughtbot.com/blog/content-compression-with-rack-deflater
     config.middleware.use Rack::Deflater
   end

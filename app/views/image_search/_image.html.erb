@@ -1,5 +1,1 @@
-<% if @provider == ImageSearchController::UNSPLASH_PROVIDER %>
-  <%= image_tag image.urls["small"], alt: image.description, class: "image-result" %>
-<% else %>
-  <%= image_tag image["webformatURL"], alt: image["tags"], class: "image-result" %>
-<% end %>
+<%= image_tag(image.url, alt: image.alt, class: "image-result") %>
