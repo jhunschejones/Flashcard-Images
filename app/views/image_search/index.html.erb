@@ -4,14 +4,26 @@
       <div class="field has-addons">
         <p class="control">
           <span class="select">
-            <%= f.select :provider, options_for_select(["Unsplash", "Pixabay", "Pexels"], params[:provider] || "Unsplash") %>
+            <%= f.select(
+              :provider,
+              options_for_select(
+                { "Unsplash" => "unsplash", "Pixabay" => "pixabay", "Pexels" => "pexels" },
+                params[:provider] || "unsplash"
+              )
+            ) %>
           </span>
         </p>
         <div class="control image-search-input-container">
-          <%= f.text_field :q, value: @previous_query, class: "input image-search-input", placeholder: "Search for an image by keyword...", autocomplete: "off" %>
+          <%= f.text_field(
+            :q,
+            value: @previous_query,
+            class: "input image-search-input",
+            placeholder: "Search for an image by keyword...",
+            autocomplete: "off"
+          ) %>
         </div>
         <div class="control">
-          <%= f.submit "Search", class: "button is-info" %>
+          <input type="submit" value="Search" class="button is-info" data-disable-with="Search">
         </div>
       </div>
     <% end %>
