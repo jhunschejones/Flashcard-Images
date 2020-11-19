@@ -15,11 +15,12 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         login_as(users(:carl))
       end
 
-      it "shows the search page with no results" do
+      it "shows the search page with no results or warnings" do
         get search_path
         assert_response :success
         assert_select "div.index-container"
         assert_select "img.image-result", count: 0
+        assert_nil flash[:notice]
       end
 
       it "doesnt query any image providers without query" do
