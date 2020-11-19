@@ -3,7 +3,7 @@ class ImageSearchController < ApplicationController
 
   UNSPLASH_PROVIDER = "unsplash".freeze
   PIXABAY_PROVIDER = "pixabay".freeze
-  PIXELS_PROVIDER = "pixels".freeze
+  PEXELS_PROVIDER = "pexels".freeze
   DEFAULT_PROVIDER = PIXABAY_PROVIDER.freeze
 
   def search
@@ -19,8 +19,8 @@ class ImageSearchController < ApplicationController
             Clients::Unsplash.search(@previous_query)
           when PIXABAY_PROVIDER
             Clients::Pixabay.search(@previous_query)
-          when PIXELS_PROVIDER
-            Clients::Pixels.search(@previous_query)
+          when PEXELS_PROVIDER
+            Clients::Pexels.search(@previous_query)
           else
             raise UnrecognizedProvider, "#{params[:provider]}"
           end

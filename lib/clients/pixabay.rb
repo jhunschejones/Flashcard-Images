@@ -9,8 +9,8 @@ module Clients
           .photos(q: query, page: page, per_page: result_count)["hits"]
           .map do |image|
             ImageSearchResult.new(
-              image["webformatURL"],
-              image["tags"]
+              url: image["webformatURL"],
+              alt: image["tags"]
             )
           end
       end

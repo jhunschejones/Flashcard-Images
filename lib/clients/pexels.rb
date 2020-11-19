@@ -1,5 +1,5 @@
 module Clients
-  class Pixels
+  class Pexels
     PAGE_NUMBER = 1.freeze
     PER_PAGE_RESULT_COUNT = 60.freeze
     # This local returns the same results as en-US when searching in english,
@@ -14,8 +14,8 @@ module Clients
           .photos
           .map do |image|
             ImageSearchResult.new(
-              image.src["medium"].gsub("h=350", "h=400"),
-              image.url.scan(/\/photo\/(.*)\//).first.first
+              url: image.src["medium"].gsub("h=350", "h=400"),
+              alt: image.src["original"].scan(/\/photos\/\d+\/(.*)\..*/).flatten.first
             )
           end
       end

@@ -9,8 +9,12 @@ module Clients
           .search(query, page, result_count)
           .map do |image|
             ImageSearchResult.new(
-              image.urls["small"].gsub("w=400", "h=400"),
-              image.description
+              url: image.urls.small.gsub("w=400", "h=400"),
+              alt: (
+                image.description ||
+                image.tags&.first&.fetch("title") ||
+                image.urls.raw.scan(/images.unsplash.com\/(.+)\?/).flatten.first
+              )&.gsub("\n", "")&.strip
             )
           end
       end

@@ -74,20 +74,20 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
       end
 
-      describe "when pixels provider is specified" do
+      describe "when pexels provider is specified" do
         it "shows the serach page with image results" do
-          get search_path(q: "cats", provider: "Pixels")
+          get search_path(q: "cats", provider: "Pexels")
           assert_response :success
           assert_select "div.index-container"
           assert_select "img.image-result", count: 60
         end
 
-        it "only queries pixels" do
-          pixels_provider = Pexels::Client.new
-          Pexels::Client.expects(:new).once.returns(pixels_provider)
+        it "only queries pexels" do
+          pexels_provider = Pexels::Client.new
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
           Pixabay.expects(:new).never
           Unsplash::Photo.expects(:search).never
-          get search_path(q: "cats", provider: "Pixels")
+          get search_path(q: "cats", provider: "Pexels")
         end
       end
 
