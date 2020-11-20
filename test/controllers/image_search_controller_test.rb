@@ -34,7 +34,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         no_results_search_term = SecureRandom.uuid
         expected_message = "Pixabay didn't have any images for '#{no_results_search_term}'"
 
-        get search_path(q: no_results_search_term, provider: "Pixabay")
+        get search_path(q: no_results_search_term, provider: "pixabay")
 
         assert_response :success
         assert_select "div.index-container"
@@ -44,7 +44,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
       describe "when unsplash provider is specified" do
         it "shows the serach page with image results" do
-          get search_path(q: "cats", provider: "Unsplash")
+          get search_path(q: "cats", provider: "unsplash")
           assert_response :success
           assert_select "div.index-container"
           assert_select "img.image-result", count: 30
@@ -54,13 +54,13 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).once.returns([])
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
-          get search_path(q: "cats", provider: "Unsplash")
+          get search_path(q: "cats", provider: "unsplash")
         end
       end
 
       describe "when pixabay provider is specified" do
         it "shows the serach page with image results" do
-          get search_path(q: "cats", provider: "Pixabay")
+          get search_path(q: "cats", provider: "pixabay")
           assert_response :success
           assert_select "div.index-container"
           assert_select "img.image-result", count: 60
@@ -71,13 +71,13 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Unsplash::Photo.expects(:search).never
           Pexels::Client.expects(:new).never
-          get search_path(q: "cats", provider: "Pixabay")
+          get search_path(q: "cats", provider: "pixabay")
         end
       end
 
       describe "when pexels provider is specified" do
         it "shows the serach page with image results" do
-          get search_path(q: "cats", provider: "Pexels")
+          get search_path(q: "cats", provider: "pexels")
           assert_response :success
           assert_select "div.index-container"
           assert_select "img.image-result", count: 60
@@ -88,7 +88,25 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Pexels::Client.expects(:new).once.returns(pexels_provider)
           Pixabay.expects(:new).never
           Unsplash::Photo.expects(:search).never
-          get search_path(q: "cats", provider: "Pexels")
+          get search_path(q: "cats", provider: "pexels")
+        end
+      end
+
+      describe "when multi provider is specified" do
+        it "shows the serach page with image results" do
+          get search_path(q: "cats", provider: "multi")
+          assert_response :success
+          assert_select "div.index-container"
+          assert_select "img.image-result", count: 150
+        end
+
+        it "queries all providers" do
+          pixabay_provider = Pixabay.new
+          pexels_provider = Pexels::Client.new
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
+          Pixabay.expects(:new).once.returns(pixabay_provider)
+          Unsplash::Photo.expects(:search).once.returns([])
+          get search_path(q: "cats", provider: "multi")
         end
       end
 
@@ -97,15 +115,16 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           get search_path(q: "cats")
           assert_response :success
           assert_select "div.index-container"
-          assert_select "img.image-result", count: 60
+          assert_select "img.image-result", count: 150
         end
 
-        it "only queries pixabay" do
+        it "queries all providers" do
           pixabay_provider = Pixabay.new
+          pexels_provider = Pexels::Client.new
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
           Pixabay.expects(:new).once.returns(pixabay_provider)
-          Unsplash::Photo.expects(:search).never
-          Pexels::Client.expects(:new).never
-          get search_path(q: "cats")
+          Unsplash::Photo.expects(:search).once.returns([])
+          get search_path(q: "cats", provider: "multi")
         end
       end
 
