@@ -6,10 +6,8 @@ class ImageSearchController < ApplicationController
   def search
     @provider = params[:provider]&.strip&.downcase || DEFAULT_PROVIDER
     @previous_query = params[:q]&.strip&.downcase
-    if @previous_query.blank?
-      @images = []
-      return render :index
-    end
+    @images = []
+    return render :index if @previous_query.blank?
 
     @images =
       case @provider
@@ -20,7 +18,12 @@ class ImageSearchController < ApplicationController
       when Clients::Pexels::PEXELS_PROVIDER
         Clients::Pexels.search(@previous_query)
       when MULTI_PROVIDER
-        Clients::Unsplash.search(@previous_query) + Clients::Pixabay.search(@previous_query) + Clients::Pexels.search(@previous_query)
+        Thread.abort_on_exception = true
+        [
+          Thread.new { Clients::Unsplash.search(@previous_query) },
+          Thread.new { Clients::Pixabay.search(@previous_query) },
+          Thread.new { Clients::Pexels.search(@previous_query) }
+        ].flat_map(&:value)
       else
         raise UnrecognizedProvider, "#{params[:provider]}"
       end
