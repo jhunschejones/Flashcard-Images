@@ -128,24 +128,17 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
       end
 
-      describe "with a bad provider configured" do
-        it "raises custom error" do
-          assert_raise ImageSearchController::UnrecognizedProvider, "space_cats" do
-            stub_const(ImageSearchController, "DEFAULT_PROVIDER", "space_cats") do
-              get search_path(q: "cats")
-            end
-          end
+      describe "when an invalid provider is specified" do
+        it "shows the search page with a message" do
+          get search_path(q: "cats", provider: "space_cats")
+          assert_equal "Unrecognized provider 'space_cats'", flash[:alert]
         end
 
-        it "does not query any real providers" do
-          assert_raise do
-            stub_const(ImageSearchController, "DEFAULT_PROVIDER", "space_cats") do
-              Pixabay.expects(:new).never
-              Unsplash::Photo.expects(:search).never
-              Pexels::Client.expects(:new).never
-              get search_path(q: "cats")
-            end
-          end
+        it "does not query any providers" do
+          Pixabay.expects(:new).never
+          Unsplash::Photo.expects(:search).never
+          Pexels::Client.expects(:new).never
+          get search_path(q: "cats", provider: "space_cats")
         end
       end
     end
