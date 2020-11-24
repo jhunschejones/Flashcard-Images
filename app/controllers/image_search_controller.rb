@@ -27,10 +27,20 @@ class ImageSearchController < ApplicationController
       else
         raise UnrecognizedProvider, "#{params[:provider]}"
       end
-    flash.now[:notice] = "#{@provider.titleize} didn't have any images for '#{@query}'" if @images.blank?
+    flash.now[:notice] = "#{provider_message} any images for '#{@query}'" if @images.blank?
     render :index
   rescue UnrecognizedProvider
     flash.now[:alert] = "Unrecognized provider '#{params[:provider]}'"
     render :index
+  end
+
+  private
+
+  def provider_message
+    if @provider == MULTI_PROVIDER
+      "No availible providers had"
+    else
+      "#{@provider.titleize} didn't have"
+    end
   end
 end
