@@ -2,6 +2,8 @@ require 'test_helper'
 
 # bundle exec ruby -Itest test/controllers/sessions_controller_test.rb
 class ImageSearchControllerTest < ActionDispatch::IntegrationTest
+  NO_RESULTS_SEARCH_TERM = '¯\_(ツ)_/¯'.freeze
+
   describe "GET search" do
     describe "when no user is logged in" do
       it "redirects to the login page" do
@@ -49,10 +51,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         describe "when no results are found" do
           it "shows empty results and expected flash message" do
-            no_results_search_term = SecureRandom.uuid
-            expected_message = "Unsplash didn't have any images for '#{no_results_search_term}'"
-
-            get search_path(q: no_results_search_term, provider: "unsplash")
+            expected_message = "Unsplash didn't have any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM, provider: "unsplash")
 
             assert_response :success
             assert_select "div.index-container"
@@ -80,10 +80,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         describe "when no results are found" do
           it "shows empty results and expected flash message" do
-            no_results_search_term = SecureRandom.uuid
-            expected_message = "Pixabay didn't have any images for '#{no_results_search_term}'"
-
-            get search_path(q: no_results_search_term, provider: "pixabay")
+            expected_message = "Pixabay didn't have any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM, provider: "pixabay")
 
             assert_response :success
             assert_select "div.index-container"
@@ -111,10 +109,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         describe "when no results are found" do
           it "shows empty results and expected flash message" do
-            no_results_search_term = SecureRandom.uuid
-            expected_message = "Pexels didn't have any images for '#{no_results_search_term}'"
-
-            get search_path(q: no_results_search_term, provider: "pexels")
+            expected_message = "Pexels didn't have any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM, provider: "pexels")
 
             assert_response :success
             assert_select "div.index-container"
@@ -143,10 +139,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         describe "when no results are found" do
           it "shows empty results and expected flash message" do
-            no_results_search_term = SecureRandom.uuid
-            expected_message = "No availible providers had any images for '#{no_results_search_term}'"
-
-            get search_path(q: no_results_search_term, provider: "multi")
+            expected_message = "No availible providers had any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM, provider: "multi")
 
             assert_response :success
             assert_select "div.index-container"
@@ -175,10 +169,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         describe "when no results are found" do
           it "shows empty results and expected flash message" do
-            no_results_search_term = SecureRandom.uuid
-            expected_message = "No availible providers had any images for '#{no_results_search_term}'"
-
-            get search_path(q: no_results_search_term)
+            expected_message = "No availible providers had any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM)
 
             assert_response :success
             assert_select "div.index-container"
