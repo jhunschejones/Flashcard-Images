@@ -1,4 +1,4 @@
-<div class="index-container">
+<div class="index-container" data-controller="search">
   <div class="form-container">
     <%= form_with(url: search_path, method: "get", local: true, class: "search-form") do |f| %>
       <div class="field has-addons">
@@ -21,7 +21,8 @@
             placeholder: "Search for an image by keyword...",
             autocomplete: "off",
             autofocus: "true",
-            type: "search"
+            type: "search",
+            data: { target: "search.searchInput" }
           ) %>
         </div>
         <div class="control">
