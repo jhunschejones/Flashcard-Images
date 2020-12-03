@@ -13,7 +13,7 @@ module Clients
           flickr.access_token = ENV["FLICKR_ACCESS_TOKEN"]
           flickr.access_secret = ENV["FLICKR_ACCESS_SECRET"]
           flickr.photos
-            .search(text: query, page: page, per_page: result_count, content_type: 1, sort: "interestingness-desc", media: "photos", safe_search: 3)
+            .search(text: query, page: page, per_page: result_count, content_type: 1, sort: "interestingness-desc", media: "photos")
             .map do |image|
               ImageSearchResult.new(
                 # Building a flickr URL https://www.flickr.com/services/api/misc.urls.html
