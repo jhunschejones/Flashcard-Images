@@ -7,8 +7,8 @@
             <%= f.select(
               :provider,
               options_for_select(
-                { "Multi" => "multi", "Unsplash" => "unsplash", "Pixabay" => "pixabay", "Pexels" => "pexels" },
-                params[:provider] || "multi"
+                ImageSearchController::PROVIDER_OPTIONS,
+                @provider
               )
             ) %>
           </span>
@@ -16,11 +16,12 @@
         <div class="control image-search-input-container">
           <%= f.text_field(
             :q,
-            value: @previous_query,
+            value: @query,
             class: "input image-search-input",
             placeholder: "Search for an image by keyword...",
             autocomplete: "off",
-            autofocus: "true"
+            autofocus: "true",
+            type: "search"
           ) %>
         </div>
         <div class="control">

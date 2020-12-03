@@ -101,6 +101,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)
+    flickr (2.0.2)
     font_awesome5_rails (1.3.0)
       railties (>= 4.2)
     globalid (0.4.2)
@@ -206,7 +207,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (2.3.0)
+    semantic_range (2.3.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -262,6 +263,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   closure-compiler!
   database_cleaner
+  flickr
   font_awesome5_rails
   listen (~> 3.2)
   lockbox

@@ -19,6 +19,7 @@ gem 'blind_index'
 gem 'unsplash'
 gem 'pixabay-api', require: 'pixabay', git: 'https://github.com/jhunschejones/pixabay'
 gem 'pexels'
+gem 'flickr'
 gem 'font_awesome5_rails'
 gem 'bulma-rails'
 
