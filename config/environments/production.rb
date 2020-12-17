@@ -39,6 +39,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
   config.session_store :cookie_store, expire_after: 14.days, key: "__Host-flashcard_images_session", secure: Rails.env.production?
 
+  config.action_dispatch.cookies_same_site_protection = :strict
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 

@@ -4,22 +4,37 @@
 # For further information see the following documentation
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
-# Rails.application.config.content_security_policy do |policy|
-#   policy.default_src :self, :https
-#   policy.font_src    :self, :https, :data
-#   policy.img_src     :self, :https, :data
-#   policy.object_src  :none
-#   policy.script_src  :self, :https
-#   policy.style_src   :self, :https
-#   # If you are using webpack-dev-server then specify webpack-dev-server host
-#   policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+if Rails.env.production?
+  Rails.application.config.content_security_policy do |policy|
+    policy.default_src :self, :https
+    policy.font_src    :self, :https, :data
+    policy.img_src     :self, :https, :data
+    policy.object_src  :none
+    policy.script_src  :self, "https://js-agent.newrelic.com", "https://bam.nr-data.net"
+    policy.style_src   :self
+    # https://docs.newrelic.com/docs/browser/new-relic-browser/getting-started/compatibility-requirements-browser-monitoring
+    policy.connect_src :self, "https://bam.nr-data.net", "https://bam-cell.nr-data.net"
 
-#   # Specify URI for violation reports
-#   # policy.report_uri "/csp-violation-report-endpoint"
-# end
+    # If you are using webpack-dev-server then specify webpack-dev-server host
+    # policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035"
+
+    # Specify URI for violation reports
+    # policy.report_uri "/csp-violation-report-endpoint"
+  end
+end
 
 # If you are using UJS then enable automatic nonce generation
 # Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
+
+# https://github.com/turbolinks/turbolinks/issues/430
+Rails.application.config.content_security_policy_nonce_generator = -> (request) do
+  # use the same csp nonce for turbolinks requests
+  if request.env['HTTP_TURBOLINKS_REFERRER'].present?
+    request.env['HTTP_X_TURBOLINKS_NONCE']
+  else
+    SecureRandom.base64(16)
+  end
+end
 
 # Set the nonce only to specific directives
 # Rails.application.config.content_security_policy_nonce_directives = %w(script-src)

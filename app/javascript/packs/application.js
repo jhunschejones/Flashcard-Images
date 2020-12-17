@@ -17,3 +17,12 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
+
+// https://github.com/turbolinks/turbolinks/issues/430
+document.addEventListener("turbolinks:request-start", (event) => {
+  const cspHeader = document.querySelector("meta[name='csp-nonce']");
+  if (cspHeader != null) {
+    const xhr = event.data.xhr;
+    xhr.setRequestHeader("X-Turbolinks-Nonce", cspHeader.content);
+  }
+});
