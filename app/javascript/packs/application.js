@@ -28,8 +28,8 @@ document.addEventListener("turbolinks:request-start", (event) => {
 });
 
 document.addEventListener("turbolinks:before-cache", () => {
-  const styleTags = document.querySelector("style");
-  const scriptTags = document.querySelector("script");
+  const styleTags = document.querySelectorAll("style");
+  const scriptTags = document.querySelectorAll("script");
   const pageNonce = document.querySelector("meta[name='csp-nonce']").content;
   if (styleTags) {
     styleTags.forEach(tag => { tag.nonce = pageNonce; });
