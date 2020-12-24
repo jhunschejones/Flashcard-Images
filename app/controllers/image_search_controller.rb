@@ -13,6 +13,7 @@ class ImageSearchController < ApplicationController
   def search
     @provider = params[:provider]&.strip&.downcase || DEFAULT_PROVIDER
     @query = params[:q]&.strip&.downcase
+    NewRelic::Agent.add_custom_attributes(provider: @provider, query: @query, user_id: @current_user.id)
     @images = []
     return render :index if @query.blank?
 
