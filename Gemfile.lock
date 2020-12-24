@@ -110,6 +110,12 @@ GEM
       railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-protobuf (3.14.0)
+    googleapis-common-protos-types (1.0.5)
+      google-protobuf (~> 3.11)
+    grpc (1.28.0)
+      google-protobuf (~> 3.11)
+      googleapis-common-protos-types (~> 1.0)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -143,6 +149,10 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    newrelic-infinite_tracing (6.14.0)
+      grpc (~> 1.28.0)
+      newrelic_rpm (= 6.14.0)
+    newrelic_rpm (6.14.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -272,6 +282,8 @@ DEPENDENCIES
   lockbox
   minitest-rails
   mocha
+  newrelic-infinite_tracing
+  newrelic_rpm
   pexels
   pg (>= 0.18, < 2.0)
   pixabay-api!
