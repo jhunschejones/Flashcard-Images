@@ -37,9 +37,9 @@ class SessionsController < ApplicationController
       "attributes" => {
         "user_id" => user_id,
         "user_email" => user_email,
-        "login_time" => Time.now.to_i
-        "success" => success
-      }
+        "login_time" => Time.now.to_i,
+        "success" => success,
+      },
     )
   end
 end
