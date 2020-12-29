@@ -32,8 +32,7 @@ class ImageSearchController < ApplicationController
         [
           Thread.new { Clients::Unsplash.search(@query) },
           Thread.new { Clients::Pixabay.search(@query) },
-          Thread.new { Clients::Pexels.search(@query) },
-          Thread.new { Clients::Flickr.search(@query) }
+          Thread.new { Clients::Pexels.search(@query) }
         ].flat_map(&:value)
       else
         raise UnrecognizedProvider, "#{params[:provider]}"
