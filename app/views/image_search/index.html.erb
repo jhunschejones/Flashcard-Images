@@ -26,10 +26,19 @@
           ) %>
         </div>
         <div class="control">
-          <input type="submit" value="Search" class="button is-info" data-disable-with="Search">
+          <button class="button is-info" type="submit" data-disable-with="Search" data-action="click->search#loading">
+            <span class="search-button-small">
+              <%= fa_icon("search", class: "fas") %>
+            </span>
+            <span class="search-button-large">Search</span>
+          </button>
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="loader-wrapper" data-search-target="loaderWrapper">
+    <div class="loader is-loading"></div>
   </div>
 
   <div class="image-results-container">

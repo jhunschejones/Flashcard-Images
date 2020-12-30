@@ -14,6 +14,17 @@
         width: 100%;
         max-width: 600px;
       }
+      .search-button-small {
+        display: none;
+      }
+      @media screen and (max-width: $navbar-breakpoint) {
+        .search-button-small {
+          display: block;
+        }
+        .search-button-large {
+          display: none;
+        }
+      }
     }
   }
 
@@ -22,6 +33,33 @@
     flex-wrap: wrap;
     img {
       max-height: 265px;
+    }
+  }
+
+  .loader-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loader {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      border-left-color: white;
+      border-bottom-color: white;
+    }
+
+    &.is-active {
+      opacity: 0.7;
+      z-index: 1000;
+      background-color: grey;
     }
   }
 }

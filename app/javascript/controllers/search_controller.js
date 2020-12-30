@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "searchInput" ]
+  static targets = [ "searchInput", "loaderWrapper" ]
 
   initialize() {
     // Move the cursor to the end of the input text
@@ -9,5 +9,10 @@ export default class extends Controller {
       this.searchInputTarget.value.length,
       this.searchInputTarget.value.length
     );
+    this.loaderWrapperTarget.classList.remove("is-active");
+  }
+
+  loading() {
+    this.loaderWrapperTarget.classList.add("is-active");
   }
 }
