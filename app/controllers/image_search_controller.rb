@@ -7,7 +7,8 @@ class ImageSearchController < ApplicationController
     "Unsplash" => "unsplash",
     "Pixabay" => "pixabay",
     "Pexels" => "pexels",
-    "Flickr" => "flickr"
+    "Flickr" => "flickr",
+    "Shutterstock" => "shutterstock"
   }.freeze
 
   def search
@@ -27,12 +28,16 @@ class ImageSearchController < ApplicationController
         Clients::Pexels.search(@query)
       when Clients::Flickr::FLICKR_PROVIDER
         Clients::Flickr.search(@query)
+      when Clients::Shutterstock::SHUTTERSTOCK_PROVIDER
+        Clients::Shutterstock.search(@query)
       when MULTI_PROVIDER
         Thread.abort_on_exception = true
         [
           Thread.new { Clients::Unsplash.search(@query) },
           Thread.new { Clients::Pixabay.search(@query) },
-          Thread.new { Clients::Pexels.search(@query) }
+          Thread.new { Clients::Pexels.search(@query) },
+          Thread.new { Clients::Flickr.search(@query) },
+          Thread.new { Clients::Shutterstock.search(@query) }
         ].flat_map(&:value)
       else
         raise UnrecognizedProvider, "#{params[:provider]}"

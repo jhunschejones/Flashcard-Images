@@ -11,6 +11,7 @@ gem 'closure-compiler', git: 'https://github.com/hmdne/closure-compiler', tag: '
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
+gem 'httparty'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'lockbox'

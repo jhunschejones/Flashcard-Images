@@ -2,7 +2,7 @@ require 'test_helper'
 
 # bundle exec ruby -Itest test/controllers/sessions_controller_test.rb
 class ImageSearchControllerTest < ActionDispatch::IntegrationTest
-  NO_RESULTS_SEARCH_TERM = '¯\_(ツ)_/¯'.freeze
+  NO_RESULTS_SEARCH_TERM = "vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt".freeze
 
   describe "GET search" do
     describe "when no user is logged in" do
@@ -30,6 +30,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
+          Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).never
           get search_path
         end
       end
@@ -57,6 +59,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
           Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).never
           get search_path(q: "cats", provider: "unsplash")
         end
 
@@ -93,10 +96,13 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         it "only queries pixabay" do
           pixabay_provider = Pixabay.new
-          Pixabay.expects(:new).once.returns(pixabay_provider)
+
           Unsplash::Photo.expects(:search).never
+          Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).never
           Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).never
+
           get search_path(q: "cats", provider: "pixabay")
         end
 
@@ -133,10 +139,13 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         it "only queries pexels" do
           pexels_provider = Pexels::Client.new
-          Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Pixabay.expects(:new).never
+
           Unsplash::Photo.expects(:search).never
+          Pixabay.expects(:new).never
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
           Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).never
+
           get search_path(q: "cats", provider: "pexels")
         end
 
@@ -173,10 +182,13 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         it "only queries flickr" do
           flickr_provider = Flickr.new
-          Flickr.expects(:new).once.returns(flickr_provider)
-          Pixabay.expects(:new).never
+
           Unsplash::Photo.expects(:search).never
+          Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
+          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Shutterstock.expects(:search).never
+
           get search_path(q: "cats", provider: "flickr")
         end
 
@@ -193,12 +205,53 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
       end
 
+      describe "when shutterstock provider is specified" do
+        it "shows the serach page with image results" do
+          get search_path(q: "cats", provider: "shutterstock")
+          assert_response :success
+          assert_select "div.index-container"
+          assert_select "img.image-result", count: 60
+        end
+
+        it "persists previous query and provider values" do
+          get search_path(q: "cats", provider: "shutterstock")
+          assert_select "input.image-search-input" do
+            assert_select "[value=?]", "cats"
+          end
+          assert_select "select#provider" do
+            assert_select "[value=?]", "flickr"
+          end
+        end
+
+        it "only queries shutterstock" do
+          Unsplash::Photo.expects(:search).never
+          Pixabay.expects(:new).never
+          Pexels::Client.expects(:new).never
+          Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).once.returns([])
+
+          get search_path(q: "cats", provider: "shutterstock")
+        end
+
+        describe "when no results are found" do
+          it "shows empty results and expected flash message" do
+            expected_message = "Shutterstock didn't have any images for '#{NO_RESULTS_SEARCH_TERM}'"
+            get search_path(q: NO_RESULTS_SEARCH_TERM, provider: "shutterstock")
+
+            assert_response :success
+            assert_select "div.index-container"
+            assert_select "img.image-result", count: 0
+            assert_equal expected_message, flash[:notice]
+          end
+        end
+      end
+
       describe "when multi provider is specified" do
         it "shows the serach page with image results" do
           get search_path(q: "cats", provider: "multi")
           assert_response :success
           assert_select "div.index-container"
-          assert_select "img.image-result", count: 150
+          assert_select "img.image-result", count: 270
         end
 
         it "persists previous query and provider values" do
@@ -211,13 +264,17 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           end
         end
 
-        it "queries only the intended providers" do
+        it "queries the intended providers" do
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
-          Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Pixabay.expects(:new).once.returns(pixabay_provider)
+          flickr_provider = Flickr.new
+
           Unsplash::Photo.expects(:search).once.returns([])
-          Flickr.expects(:new).never
+          Pixabay.expects(:new).once.returns(pixabay_provider)
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
+          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Shutterstock.expects(:search).once.returns([])
+
           get search_path(q: "cats", provider: "multi")
         end
 
@@ -239,7 +296,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           get search_path(q: "cats")
           assert_response :success
           assert_select "div.index-container"
-          assert_select "img.image-result", count: 150
+          assert_select "img.image-result", count: 270
         end
 
         it "persists previous query and provider values" do
@@ -255,10 +312,14 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         it "queries the intended providers" do
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
-          Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Pixabay.expects(:new).once.returns(pixabay_provider)
+          flickr_provider = Flickr.new
+
           Unsplash::Photo.expects(:search).once.returns([])
-          Flickr.expects(:new).never
+          Pixabay.expects(:new).once.returns(pixabay_provider)
+          Pexels::Client.expects(:new).once.returns(pexels_provider)
+          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Shutterstock.expects(:search).once.returns([])
+
           get search_path(q: "cats")
         end
 
@@ -286,6 +347,8 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pexels::Client.expects(:new).never
           Flickr.expects(:new).never
+          Clients::Shutterstock.expects(:search).never
+
           get search_path(q: "cats", provider: "space_cats")
         end
       end

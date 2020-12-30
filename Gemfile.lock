@@ -278,6 +278,7 @@ DEPENDENCIES
   database_cleaner
   flickr
   font_awesome5_rails
+  httparty
   listen (~> 3.2)
   lockbox
   minitest-rails
