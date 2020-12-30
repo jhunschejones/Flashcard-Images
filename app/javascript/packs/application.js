@@ -30,11 +30,13 @@ document.addEventListener("turbolinks:request-start", (event) => {
 document.addEventListener("turbolinks:before-cache", () => {
   const styleTags = document.querySelectorAll("style");
   const scriptTags = document.querySelectorAll("script");
-  const pageNonce = document.querySelector("meta[name='csp-nonce']").content;
-  if (styleTags) {
-    styleTags.forEach(tag => { tag.nonce = pageNonce; });
-  }
-  if (scriptTags) {
-    scriptTags.forEach(tag => { tag.nonce = pageNonce; });
+  const pageNonce = document.querySelector("meta[name='csp-nonce']");
+  if (pageNonce) {
+    if (styleTags) {
+      styleTags.forEach(tag => { tag.nonce = pageNonce.content; });
+    }
+    if (scriptTags) {
+      scriptTags.forEach(tag => { tag.nonce = pageNonce.content; });
+    }
   }
 });
