@@ -30,7 +30,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
           get search_path
         end
@@ -58,7 +58,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).once.returns([])
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
           get search_path(q: "cats", provider: "unsplash")
         end
@@ -100,7 +100,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
 
           get search_path(q: "cats", provider: "pixabay")
@@ -143,7 +143,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
 
           get search_path(q: "cats", provider: "pexels")
@@ -181,12 +181,10 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
 
         it "only queries flickr" do
-          flickr_provider = Flickr.new
-
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Flickr.expects(:search).once.returns([])
           Clients::Shutterstock.expects(:search).never
 
           get search_path(q: "cats", provider: "flickr")
@@ -227,7 +225,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Unsplash::Photo.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).once.returns([])
 
           get search_path(q: "cats", provider: "shutterstock")
@@ -267,12 +265,11 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         it "queries the intended providers" do
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
-          flickr_provider = Flickr.new
 
           Unsplash::Photo.expects(:search).once.returns([])
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Flickr.expects(:search).once.returns([])
           Clients::Shutterstock.expects(:search).once.returns([])
 
           get search_path(q: "cats", provider: "multi")
@@ -312,12 +309,11 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         it "queries the intended providers" do
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
-          flickr_provider = Flickr.new
 
           Unsplash::Photo.expects(:search).once.returns([])
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).once.returns(pexels_provider)
-          Flickr.expects(:new).once.returns(flickr_provider)
+          Clients::Flickr.expects(:search).once.returns([])
           Clients::Shutterstock.expects(:search).once.returns([])
 
           get search_path(q: "cats")
@@ -346,7 +342,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           Pixabay.expects(:new).never
           Unsplash::Photo.expects(:search).never
           Pexels::Client.expects(:new).never
-          Flickr.expects(:new).never
+          Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
 
           get search_path(q: "cats", provider: "space_cats")
