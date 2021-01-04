@@ -15,6 +15,10 @@ if Rails.env.production?
     # https://docs.newrelic.com/docs/browser/new-relic-browser/getting-started/compatibility-requirements-browser-monitoring
     policy.connect_src :self, "https://bam.nr-data.net", "https://bam-cell.nr-data.net"
 
+    policy.form_action :self
+    policy.base_uri    :self
+    policy.frame_ancestors :none
+
     # If you are using webpack-dev-server then specify webpack-dev-server host
     # policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035"
 
