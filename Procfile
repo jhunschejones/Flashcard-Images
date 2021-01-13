@@ -1,2 +1,2 @@
 release: rake db:migrate
-web: bundle exec puma -p ${PORT:-3000} -e ${RACK_ENV:-development}
+web: bin/start-nginx bundle exec puma -C config/puma.rb
