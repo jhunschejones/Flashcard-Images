@@ -18,7 +18,7 @@ events {
 http {
   gzip on;
   gzip_comp_level 3;
-  gzip_min_length 100;
+  gzip_min_length 500;
   gzip_vary on;
   gzip_buffers 16 8k;
   gzip_proxied any;
@@ -32,6 +32,7 @@ http {
     application/xhtml+xml
     application/xml
     font/opentype
+    application/font-woff2
     image/svg+xml
     image/x-icon
     text/html
