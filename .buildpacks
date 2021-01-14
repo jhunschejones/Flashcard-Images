@@ -1,0 +1,3 @@
+https://github.com/heroku/heroku-buildpack-jvm-common.git
+https://github.com/heroku/heroku-buildpack-ruby.git
+https://github.com/heroku/heroku-buildpack-nginx.git
