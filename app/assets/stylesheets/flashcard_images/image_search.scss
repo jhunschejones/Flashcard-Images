@@ -1,5 +1,8 @@
 .index-container {
   padding: 50px 20px;
+  @media screen and (max-width: $navbar-breakpoint) {
+    padding: 50px 12px;
+  }
   display: flex;
   flex-direction: column;
 
@@ -32,7 +35,10 @@
     padding-top: 50px;
     flex-wrap: wrap;
     img {
-      max-height: 265px;
+      max-height: 225px;
+      @media screen and (max-width: $navbar-breakpoint) {
+        max-height: 150px;
+      }
     }
   }
 
