@@ -17,7 +17,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'lockbox'
 gem 'blind_index'
 
-gem 'unsplash'
 gem 'pixabay-api', require: 'pixabay', git: 'https://github.com/jhunschejones/pixabay'
 gem 'pexels'
 gem 'flickr'

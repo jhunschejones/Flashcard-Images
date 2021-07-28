@@ -27,7 +27,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
 
         it "doesnt query any image providers" do
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).never
@@ -55,7 +55,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
 
         it "only queries unsplash" do
-          Unsplash::Photo.expects(:search).once.returns([])
+          Clients::Unsplash.expects(:search).once.returns([])
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).never
@@ -97,7 +97,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         it "only queries pixabay" do
           pixabay_provider = Pixabay.new
 
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).never
@@ -140,7 +140,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         it "only queries pexels" do
           pexels_provider = Pexels::Client.new
 
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).once.returns(pexels_provider)
           Clients::Flickr.expects(:search).never
@@ -181,7 +181,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
 
         it "only queries flickr" do
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).once.returns([])
@@ -222,7 +222,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
         end
 
         it "only queries shutterstock" do
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pixabay.expects(:new).never
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).never
@@ -266,7 +266,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
 
-          Unsplash::Photo.expects(:search).once.returns([])
+          Clients::Unsplash.expects(:search).once.returns([])
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).once.returns(pexels_provider)
           Clients::Flickr.expects(:search).once.returns([])
@@ -310,7 +310,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
           pixabay_provider = Pixabay.new
           pexels_provider = Pexels::Client.new
 
-          Unsplash::Photo.expects(:search).once.returns([])
+          Clients::Unsplash.expects(:search).once.returns([])
           Pixabay.expects(:new).once.returns(pixabay_provider)
           Pexels::Client.expects(:new).once.returns(pexels_provider)
           Clients::Flickr.expects(:search).once.returns([])
@@ -340,7 +340,7 @@ class ImageSearchControllerTest < ActionDispatch::IntegrationTest
 
         it "does not query any providers" do
           Pixabay.expects(:new).never
-          Unsplash::Photo.expects(:search).never
+          Clients::Unsplash.expects(:search).never
           Pexels::Client.expects(:new).never
           Clients::Flickr.expects(:search).never
           Clients::Shutterstock.expects(:search).never
