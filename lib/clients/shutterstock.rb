@@ -27,7 +27,7 @@ module Clients
                 safe: "false",
               }
             )
-            JSON.parse(response.body)["data"].map do |image|
+            JSON.parse(response.body).fetch("data", []).map do |image|
               ImageSearchResult.new(
                 url: image["assets"]["preview_1000"]["url"],
                 alt: image["description"]

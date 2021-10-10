@@ -24,7 +24,7 @@ module Clients
               }),
               query: query_params
             )
-            JSON.parse(response.body)["results"].map do |image|
+            JSON.parse(response.body).fetch("results", []).map do |image|
               ImageSearchResult.new(
                 url: image["urls"]["small"].gsub("w=400", "h=400"),
                 alt: image["description"] || image["alt_description"]

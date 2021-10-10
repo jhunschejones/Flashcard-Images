@@ -11,9 +11,9 @@ module Clients
       def search(query, page: PAGE_NUMBER, result_count: PER_PAGE_RESULT_COUNT, locale: LOCALE)
         Rails.cache.fetch("query:#{query}:provider:#{PEXELS_PROVIDER}:page:#{page}:result_count:#{result_count}:locale:#{locale}") do
           time_client_response(client: PEXELS_PROVIDER, query: query) do
-            ::Pexels::Client.new.photos
+            (::Pexels::Client.new.photos
               .search(query, page: page, per_page: result_count, locale: locale)
-              .photos
+              .photos || [])
               .map do |image|
                 ImageSearchResult.new(
                   url: image.src["medium"].gsub("h=350", "h=400"),

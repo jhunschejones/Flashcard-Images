@@ -9,7 +9,7 @@ module Clients
         Rails.cache.fetch("query:#{query}:provider:#{PIXABAY_PROVIDER}:page:#{page}:result_count:#{result_count}") do
           time_client_response(client: PIXABAY_PROVIDER, query: query) do
             ::Pixabay.new
-              .photos(q: query, page: page, per_page: result_count)["hits"]
+              .photos(q: query, page: page, per_page: result_count).fetch("hits", [])
               .map do |image|
                 ImageSearchResult.new(
                   url: image["webformatURL"],
