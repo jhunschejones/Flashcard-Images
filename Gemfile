@@ -47,4 +47,6 @@ group :test do
   gem 'minitest-rails'
   gem 'database_cleaner'
   gem 'mocha'
+  gem 'webmock'
+  gem 'vcr'
 end

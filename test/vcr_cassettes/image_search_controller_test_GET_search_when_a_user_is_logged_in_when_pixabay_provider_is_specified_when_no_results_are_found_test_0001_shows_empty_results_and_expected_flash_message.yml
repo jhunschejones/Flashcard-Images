@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pixabay.com/api/?key=<PIXABAY_API_KEY>&page=1&per_page=60&q=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:17 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '35'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=86400
+      Access-Control-Max-Age:
+      - '86400'
+      X-Ratelimit-Remaining:
+      - '99'
+      X-Ratelimit-Limit:
+      - '100'
+      X-Ratelimit-Reset:
+      - '0.6'
+      Vary:
+      - Accept, Accept-Language, Cookie, Accept-Encoding
+      Allow:
+      - POST, OPTIONS, GET
+      Content-Security-Policy:
+      - frame-ancestors none
+      X-Frame-Options:
+      - DENY
+      Content-Language:
+      - en
+      Set-Cookie:
+      - __cf_bm=_V8IJHC5V0PyEJQnXliyouTPVE5zJUQbm_Y4rdv03l0-1633890137-0-Adb2YusJ9dQJ86arHkSHWMyRUgZ1Ml/+g0z8gET90n6Z2QEo2HCj5kpn+5jKeTzp6L747kSiHegrFl4cKclWMU0=;
+        path=/; expires=Sun, 10-Oct-21 18:52:17 GMT; domain=.pixabay.com; HttpOnly;
+        Secure; SameSite=None
+      - anonymous_user_id=None; expires=Fri, 28 Oct 2089 21:36:24 GMT; Max-Age=2147483647;
+        Path=/
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Limit,X-RateLimit-Remaining,X-RateLimit-Reset
+      Cf-Cache-Status:
+      - MISS
+      Accept-Ranges:
+      - bytes
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 69c1df8d7eac02d4-SEA
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"total":0,"totalHits":0,"hits":[]}'
+  recorded_at: Sun, 10 Oct 2021 18:22:17 GMT
+recorded_with: VCR 6.0.0

@@ -1,8 +1,19 @@
 require 'test_helper'
 
-# bundle exec ruby -Itest test/controllers/sessions_controller_test.rb
+# bundle exec ruby -Itest test/controllers/image_search_controller_test.rb
 class ImageSearchControllerTest < ActionDispatch::IntegrationTest
   NO_RESULTS_SEARCH_TERM = "vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt".freeze
+
+  before do
+    VCR.insert_cassette(
+      "image_search_controller_test_#{self.class}_#{name}",
+      { match_requests_on: [:method, :path] }
+    )
+  end
+
+  after do
+    VCR.eject_cassette
+  end
 
   describe "GET search" do
     describe "when no user is logged in" do
