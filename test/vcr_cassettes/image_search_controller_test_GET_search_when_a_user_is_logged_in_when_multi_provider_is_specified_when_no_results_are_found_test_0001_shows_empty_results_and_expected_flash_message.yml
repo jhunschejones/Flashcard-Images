@@ -1,0 +1,339 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.unsplash.com/search/photos?page=1&per_page=30&query=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Version:
+      - v1
+      Authorization:
+      - Client-ID <UNSPLASH_ACCESS_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '57'
+      Server:
+      - Cowboy
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Request-Method:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Warning:
+      - The tags property in this endpoint is deprecated. https://changelog.unsplash.com/deprecations/2021/07/12/tags-search-deprecation.html
+      X-Total:
+      - '0'
+      X-Per-Page:
+      - '30'
+      Content-Type:
+      - application/json
+      Etag:
+      - W/"7814e74bfa62dcc505522924e3c8cf4b"
+      X-Ratelimit-Limit:
+      - '50'
+      X-Ratelimit-Remaining:
+      - '49'
+      X-Request-Id:
+      - a283729e-c1fa-4e09-9722-b7f680153f2f
+      X-Runtime:
+      - '0.086176'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur, 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sun, 10 Oct 2021 18:22:21 GMT
+      Age:
+      - '45709'
+      X-Served-By:
+      - cache-dca17777-DCA, cache-pdx12330-PDX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 6
+      X-Timer:
+      - S1633890141.206475,VS0,VE0
+      Vary:
+      - Accept-Encoding, Origin,Authorization,client-geo-region
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":0,"total_pages":0,"results":[]}'
+  recorded_at: Sun, 10 Oct 2021 18:22:21 GMT
+- request:
+    method: get
+    uri: https://pixabay.com/api/?key=<PIXABAY_API_KEY>&page=1&per_page=60&q=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '35'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=86400
+      Access-Control-Max-Age:
+      - '86400'
+      X-Ratelimit-Remaining:
+      - '86'
+      X-Ratelimit-Limit:
+      - '100'
+      X-Ratelimit-Reset:
+      - '0.6436463882183207'
+      Vary:
+      - Accept, Accept-Language, Cookie, Accept-Encoding
+      Allow:
+      - GET, OPTIONS, POST
+      Content-Security-Policy:
+      - frame-ancestors none
+      X-Frame-Options:
+      - DENY
+      Content-Language:
+      - en
+      Set-Cookie:
+      - __cf_bm=hJR_4Xnm4O5Y2X7g72vIlggn0Z7q3KHRPoeHS6XeG7w-1633890141-0-AYNPAb2ThywRSV+5Q8s6ndKO340PJ+PbPe+l6zJGkU2Gpdm0pXaB0wRDLCF9OItwtIXLZXCr5En9qftNUTUnxt8=;
+        path=/; expires=Sun, 10-Oct-21 18:52:21 GMT; domain=.pixabay.com; HttpOnly;
+        Secure; SameSite=None
+      - anonymous_user_id=None; expires=Fri, 28 Oct 2089 21:36:28 GMT; Max-Age=2147483647;
+        Path=/
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Limit,X-RateLimit-Remaining,X-RateLimit-Reset
+      Cf-Cache-Status:
+      - MISS
+      Accept-Ranges:
+      - bytes
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 69c1dfa679c860a7-SEA
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"total":0,"totalHits":0,"hits":[]}'
+  recorded_at: Sun, 10 Oct 2021 18:22:21 GMT
+- request:
+    method: get
+    uri: https://api.pexels.com/v1/search?locale=ja-JP&page=1&per_page=60&query=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<PEXELS_API_KEY>"
+      User-Agent:
+      - Pexels/Ruby (0.4.0)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Host:
+      - api.pexels.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '76'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 69c1dfa6afd86c32-SJC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - __cf_bm=QIVp9q37ZZiZacFhrGUifS6WgbTB3t1BeBzvpVZejIA-1633844432-0-AZ3tM2R5X+P4UsPgIyURvc/Fj9y2mHAu5ucIGrC+NIuKEmXct/f7+OSIdwuYvRLfKg3ui37kXnuyqjMAgSU9VRE=;
+        path=/; expires=Sun, 10-Oct-21 06:10:32 GMT; domain=.pexels.com; HttpOnly;
+        Secure; SameSite=None
+      - __cf_bm=ubWvxI7UY.uIeAK0uWJ_F9Z89T.EP6g5Y.HCdWKL29s-1633890141-0-AeLH+zMDIp/lAEhNhAcPsT/t+V3zIhS/f83HRDl01GWeeL7ArFxhq1Z6d/e9uWXN9/Z38MuMV1KUcMs6zsBNscQ=;
+        path=/; expires=Sun, 10-Oct-21 18:52:21 GMT; domain=.pexels.com; HttpOnly;
+        Secure; SameSite=None
+      Vary:
+      - Origin, Accept-Encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '20000'
+      X-Ratelimit-Remaining:
+      - '19673'
+      X-Ratelimit-Reset:
+      - '1635039298'
+      X-Request-Id:
+      - 57a401cd-b068-40ad-89c1-03eadd543f55
+      X-Runtime:
+      - '0.100585'
+      X-Server:
+      - master
+      X-Tyk-Cached-Response:
+      - '1'
+      Server:
+      - cloudflare
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"per_page":60,"photos":[],"total_results":0}'
+  recorded_at: Sun, 10 Oct 2021 18:22:21 GMT
+- request:
+    method: get
+    uri: https://api.shutterstock.com/v2/images/search?keyword_safe_search=false&page=1&per_page=60&query=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt&region=ja&safe=false&sort=relevance
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer <SHUTTERSTOCK_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '122'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Etag:
+      - '"7a-yMala2fKSqtoW6hflHp4WdtKmQM"'
+      X-Shutterstock-App-Version:
+      - apitwo
+      X-Shutterstock-Resource:
+      - "/v2/images/search"
+      Traceparent:
+      - 00-39e1433a8eac4737-1aca29cfcf648910-01
+      X-End-User-Client-Id:
+      - WhGgclaoNZGaRAJkS85bkW87u19vp42q
+      X-End-User-Request-Id:
+      - rrt-06176f65917539f47-b-ea-29340-59412347-1
+      X-Request-Id:
+      - rrt-06176f65917539f47-b-ea-29340-59412347-1
+      X-End-User-User-Id:
+      - '237798315'
+      Ratelimit-Limit:
+      - '100'
+      Ratelimit-Remaining:
+      - '68'
+      Ratelimit-Reset:
+      - '1633892400000'
+    body:
+      encoding: UTF-8
+      string: '{"page":1,"per_page":60,"total_count":0,"search_id":"190e9844-4288-4774-9844-76dcaba726a8","data":[],"spellcheck_info":{}}'
+  recorded_at: Sun, 10 Oct 2021 18:22:21 GMT
+- request:
+    method: get
+    uri: https://www.flickr.com/services/rest/?content_type=1&format=json&is_getty=true&media=photos&method=flickr.photos.search&nojsoncallback=1&oauth_consumer_key=<FLICKR_API_KEY>&oauth_nonce=daqcazcit3Yu9fXCxDrBtmRK8V5VW7F5mln94JYSlUI=&oauth_signature=qVg9wNcsJgiC9%2Bg83ANDPCeGZJE=&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1633890141&oauth_token=<FLICKR_ACCESS_TOKEN>&page=1&per_page=60&safe_search=3&sort=relevance&text=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '77'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 10 Oct 2021 18:22:23 GMT
+      Server:
+      - Apache/2.4.49 (Ubuntu)
+      Set-Cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Tue, 09-Nov-2021 18:22:21 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 446313511980eb02f28ff5a9a4147c0a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - HIO50-C1
+      X-Amz-Cf-Id:
+      - A-gMIWbARgF2M1Gu5nJskTv9CVu8mJlJVcqb0B_geMJZbB2WGpi4Zw==
+    body:
+      encoding: UTF-8
+      string: '{"photos":{"page":1,"pages":0,"perpage":60,"total":0,"photo":[]},"stat":"ok"}'
+  recorded_at: Sun, 10 Oct 2021 18:22:24 GMT
+recorded_with: VCR 6.0.0

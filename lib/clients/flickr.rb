@@ -15,7 +15,7 @@ module Clients
               flickr = ::Flickr.new
               flickr.access_token = ENV["FLICKR_ACCESS_TOKEN"]
               flickr.access_secret = ENV["FLICKR_ACCESS_SECRET"]
-              flickr.photos
+              (flickr.photos || [])
                 .search(
                   text: query,
                   page: page,
@@ -53,7 +53,7 @@ module Clients
                 headers: JSON_HEADERS,
                 query: query_params.merge({oauth_signature: sign(query_params)})
               )
-              JSON.parse(response.body)["photos"]["photo"].map do |image|
+              (JSON.parse(response.body).dig("photos", "photo") || []).map do |image|
                 ImageSearchResult.new(
                   # Building an image URL https://www.flickr.com/services/api/misc.urls.html
                   url: "https://live.staticflickr.com/#{image["server"]}/#{image["id"]}_#{image["secret"]}_z.jpg",

@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.pexels.com/v1/search?locale=ja-JP&page=1&per_page=60&query=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<PEXELS_API_KEY>"
+      User-Agent:
+      - Pexels/Ruby (0.4.0)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Host:
+      - api.pexels.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '76'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 69c1dfa55801fdc1-PDX
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - __cf_bm=AmI3L7n7FSANeBMnpsdGPJ0d9ZZcrtsAFJmM..Rd7gU-1633890141-0-AV25FDjPWc92EPnfI88pcmK0gDK6+NaCqwcHq87jJzjsIg86V2TF2eB81PPHbkeCNt+FeqZ1T11HXRqPYRdRdDY=;
+        path=/; expires=Sun, 10-Oct-21 18:52:21 GMT; domain=.pexels.com; HttpOnly;
+        Secure; SameSite=None
+      - __cf_bm=QIVp9q37ZZiZacFhrGUifS6WgbTB3t1BeBzvpVZejIA-1633844432-0-AZ3tM2R5X+P4UsPgIyURvc/Fj9y2mHAu5ucIGrC+NIuKEmXct/f7+OSIdwuYvRLfKg3ui37kXnuyqjMAgSU9VRE=;
+        path=/; expires=Sun, 10-Oct-21 06:10:32 GMT; domain=.pexels.com; HttpOnly;
+        Secure; SameSite=None
+      Vary:
+      - Origin, Accept-Encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '20000'
+      X-Ratelimit-Remaining:
+      - '19674'
+      X-Ratelimit-Reset:
+      - '1635039298'
+      X-Request-Id:
+      - 57a401cd-b068-40ad-89c1-03eadd543f55
+      X-Runtime:
+      - '0.100585'
+      X-Server:
+      - master
+      X-Tyk-Cached-Response:
+      - '1'
+      Server:
+      - cloudflare
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"per_page":60,"photos":[],"total_results":0}'
+  recorded_at: Sun, 10 Oct 2021 18:22:21 GMT
+recorded_with: VCR 6.0.0

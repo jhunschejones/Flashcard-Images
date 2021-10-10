@@ -2,6 +2,17 @@ require 'test_helper'
 
 # bundle exec ruby -Itest test/lib/clients/flickr_test.rb
 class Clients::FlickrTest < ActiveSupport::TestCase
+  before do
+    VCR.insert_cassette(
+      "flickr_test_#{self.class}_#{name}",
+      { match_requests_on: [:method, :path] }
+    )
+  end
+
+  after do
+    VCR.eject_cassette
+  end
+
   describe ".search" do
     it "returns expected number of images" do
       results = Clients::Flickr.search("cats")

@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.flickr.com/services/rest/?content_type=1&format=json&is_getty=true&media=photos&method=flickr.photos.search&nojsoncallback=1&oauth_consumer_key=<FLICKR_API_KEY>&oauth_nonce=RjJ3AZn0yQVhdpCP5lABjC8UPVZ1gfCYVQlAeVSaMW0=&oauth_signature=D4LQd7jj78l9ZLImwdnHSiAOI64=&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1633890141&oauth_token=<FLICKR_ACCESS_TOKEN>&page=1&per_page=60&safe_search=3&sort=relevance&text=cats
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 10 Oct 2021 18:22:23 GMT
+      Server:
+      - Apache/2.4.49 (Ubuntu)
+      Set-Cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Tue, 09-Nov-2021 18:22:22 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 9b311162717b41c968f6f00426d88aaa.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - HIO50-C1
+      X-Amz-Cf-Id:
+      - SDQ2CMKgpudF9zv8RDOfKrmS-By9dYcbmMN7R21j_9pgFWnIKDMIyQ==
+    body:
+      encoding: UTF-8
+      string: '{"photos":{"page":1,"pages":178,"perpage":60,"total":10672,"photo":[{"id":"6164169918","owner":"26902384@N07","secret":"be1ee7b9c0","server":"6174","farm":7,"title":"Cat.","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4782953017","owner":"41350361@N04","secret":"b601af4dea","server":"4075","farm":5,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"1424229542","owner":"67706190@N00","secret":"0a119264e7","server":"1416","farm":2,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5589378134","owner":"36521965462@N01","secret":"2a8d97ceee","server":"5221","farm":6,"title":"cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"2254118705","owner":"23567127@N03","secret":"36cfa01a1e","server":"2291","farm":3,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"3820566773","owner":"90458625@N00","secret":"61347102b7","server":"2531","farm":3,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5803365266","owner":"61357928@N05","secret":"129ae7d703","server":"3559","farm":4,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"12200057804","owner":"57793655@N00","secret":"f8cc57aec7","server":"5524","farm":6,"title":"Cats","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6068681549","owner":"8670276@N02","secret":"a08f81ae62","server":"6201","farm":7,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8232581972","owner":"23546957@N00","secret":"1688ffe7c2","server":"8066","farm":9,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"9181801693","owner":"43183729@N06","secret":"28fe940dc0","server":"5464","farm":6,"title":"Sevillian
+        Cat...","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4732045753","owner":"31583112@N00","secret":"edc668294d","server":"1323","farm":2,"title":"The
+        Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"2406941177","owner":"85402886@N00","secret":"9fa79c2f9c","server":"2088","farm":3,"title":"my
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8750269775","owner":"14409084@N07","secret":"14bc0752fe","server":"8273","farm":9,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5697252303","owner":"49907010@N02","secret":"f79406fb6f","server":"5030","farm":6,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"9716234282","owner":"94257657@N05","secret":"516637d751","server":"5503","farm":6,"title":"peak
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"139426624","owner":"11032335@N00","secret":"f49c9f19cc","server":"45","farm":1,"title":"Lomo
+        Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5736905128","owner":"49907010@N02","secret":"aeaaac714c","server":"5022","farm":6,"title":"Le
+        jeu","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7007795047","owner":"55700141@N05","secret":"08be1d2229","server":"7109","farm":8,"title":"my
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"2320489912","owner":"32719556@N00","secret":"c5cd9826b7","server":"3111","farm":4,"title":"lucy
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5820080070","owner":"52608016@N05","secret":"321a3f9975","server":"5030","farm":6,"title":"pop
+        up","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5414517668","owner":"40103639@N02","secret":"9813930130","server":"5177","farm":6,"title":"the
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5990895008","owner":"31405995@N00","secret":"3ef244a96e","server":"6001","farm":7,"title":"cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6355556307","owner":"63334319@N03","secret":"0e13981e84","server":"6219","farm":7,"title":"golf
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7115155685","owner":"50856920@N06","secret":"6d30a1a0ea","server":"7259","farm":8,"title":"You
+        said what now?  \u3002\u3002\u3002\u3058\u3054\u304f\u307f\u307f","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7697802972","owner":"23546957@N00","secret":"7918ec01ba","server":"8433","farm":9,"title":"Spot
+        the cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7375944556","owner":"50856920@N06","secret":"6a4800dd6d","server":"7097","farm":8,"title":"ROBOT\u3000CAT!\u3002\u3002\u96e8\u964d\u3063\u3066\u732b\u56fa\u307e\u308b","ispublic":1,"isfriend":0,"isfamily":0},{"id":"3909940389","owner":"22016970@N00","secret":"0c97fe98fc","server":"2663","farm":3,"title":"Cat
+        Close-Up","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5179830999","owner":"35751760@N03","secret":"6d9d48995c","server":"4103","farm":5,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4713436561","owner":"23546957@N00","secret":"24bc76a04c","server":"4016","farm":5,"title":"Tenderness","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8407097879","owner":"50856920@N06","secret":"f91de6d0fa","server":"8231","farm":9,"title":"[COLD!!!!!I
+        hate here!] \u2191\u3000he is mad....","ispublic":1,"isfriend":0,"isfamily":0},{"id":"2915459842","owner":"8670276@N02","secret":"de6be61c80","server":"3038","farm":4,"title":"\u0395\u03c0\u03c0...
+        \u03c0\u03bf\u03b9\u03ac \u03b5\u03af\u03c3\u03b1\u03b9 \u03b5\u03c3\u03cd!!;;","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5581474477","owner":"49907010@N02","secret":"1b0c867ba0","server":"5262","farm":6,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"36299351","owner":"23825236@N00","secret":"6d6b4c506b","server":"23","farm":1,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6353565003","owner":"43500512@N04","secret":"aaf6b01be6","server":"6119","farm":7,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7049458189","owner":"62249410@N06","secret":"4a186e4d36","server":"7052","farm":8,"title":"cat
+        4_1","ispublic":1,"isfriend":0,"isfamily":0},{"id":"9325731486","owner":"52608016@N05","secret":"91f97493cc","server":"7315","farm":8,"title":".","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5745515083","owner":"60696406@N07","secret":"0693cf5016","server":"3294","farm":4,"title":"wild
+        cat 5","ispublic":1,"isfriend":0,"isfamily":0},{"id":"992050139","owner":"35766967@N00","secret":"994f8b94be","server":"1340","farm":2,"title":"the
+        philosophical cats","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4175711159","owner":"43500512@N04","secret":"bbf8d9ba92","server":"2716","farm":3,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4176471306","owner":"43500512@N04","secret":"251782c6d8","server":"2498","farm":3,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4871970022","owner":"13054551@N00","secret":"c22d755270","server":"4075","farm":5,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6128037749","owner":"62356909@N05","secret":"f8fdf27f1d","server":"6202","farm":7,"title":"my
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6062146652","owner":"11115570@N00","secret":"74fdea2565","server":"6087","farm":7,"title":"Titti","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5487315008","owner":"21406542@N00","secret":"2f3e3dc60c","server":"5296","farm":6,"title":"Feline...","ispublic":1,"isfriend":0,"isfamily":0},{"id":"9329837961","owner":"52608016@N05","secret":"1f4c19dff1","server":"3730","farm":4,"title":".","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5628596949","owner":"14221121@N00","secret":"c2b77cc3f5","server":"5265","farm":6,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6421945973","owner":"17543120@N08","secret":"8af0b7418e","server":"7024","farm":8,"title":"extra
+        cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8337858429","owner":"39017694@N00","secret":"2f4c470a5a","server":"8361","farm":9,"title":"Cat
+        with blue and yellow eyes","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5392663878","owner":"13054551@N00","secret":"15732b0a89","server":"5051","farm":6,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6298962887","owner":"24913092@N07","secret":"da779c6e8d","server":"6038","farm":7,"title":"Urban
+        Tiger II","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6287913819","owner":"39463388@N04","secret":"f51f9e5ac3","server":"6214","farm":7,"title":"let
+        me in","ispublic":1,"isfriend":0,"isfamily":0},{"id":"7519609766","owner":"50856920@N06","secret":"b6f0102971","server":"7130","farm":8,"title":"HOME
+        ALONE (Baby cat)","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8378028054","owner":"60703608@N08","secret":"39cb624a11","server":"8218","farm":9,"title":"Are
+        you laughing?","ispublic":1,"isfriend":0,"isfamily":0},{"id":"3257188383","owner":"90537551@N00","secret":"180a811e8c","server":"3436","farm":4,"title":"","ispublic":1,"isfriend":0,"isfamily":0},{"id":"8527292859","owner":"56461123@N00","secret":"bb1c50555c","server":"8245","farm":9,"title":"Marmalade","ispublic":1,"isfriend":0,"isfamily":0},{"id":"5746078154","owner":"60696406@N07","secret":"c2cc0bf615","server":"3563","farm":4,"title":"wild
+        cat 2","ispublic":1,"isfriend":0,"isfamily":0},{"id":"6078880166","owner":"13054551@N00","secret":"c90f78a691","server":"6085","farm":7,"title":"Cat","ispublic":1,"isfriend":0,"isfamily":0},{"id":"4634564027","owner":"83692614@N00","secret":"e177774f87","server":"4013","farm":5,"title":"akira","ispublic":1,"isfriend":0,"isfamily":0},{"id":"11578501166","owner":"50856920@N06","secret":"6a2be26a31","server":"3791","farm":4,"title":"\u3046\u3081\u3047\uff01\uff01\uff01\u301cThis
+        is his specialty","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"}'
+  recorded_at: Sun, 10 Oct 2021 18:22:23 GMT
+recorded_with: VCR 6.0.0

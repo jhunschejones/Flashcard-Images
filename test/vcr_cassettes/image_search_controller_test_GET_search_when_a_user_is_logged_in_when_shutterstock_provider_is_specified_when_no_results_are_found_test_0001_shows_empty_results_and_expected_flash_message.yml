@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.shutterstock.com/v2/images/search?keyword_safe_search=false&page=1&per_page=60&query=vvgecievugufukukdhdifljfcfnltjbgfnvtgjvhillt&region=ja&safe=false&sort=relevance
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer <SHUTTERSTOCK_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Oct 2021 18:22:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '122'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Etag:
+      - '"7a-XleqAqoRlh65wL3nWuErvemeIPU"'
+      X-Shutterstock-App-Version:
+      - apitwo
+      X-Shutterstock-Resource:
+      - "/v2/images/search"
+      Traceparent:
+      - 00-187c0ae1b53add5b-981f6bac43982c21-01
+      X-End-User-Client-Id:
+      - WhGgclaoNZGaRAJkS85bkW87u19vp42q
+      X-End-User-Request-Id:
+      - rrt-06176f65917539f47-b-ea-29340-59412290-1
+      X-Request-Id:
+      - rrt-06176f65917539f47-b-ea-29340-59412290-1
+      X-End-User-User-Id:
+      - '237798315'
+      Ratelimit-Limit:
+      - '100'
+      Ratelimit-Remaining:
+      - '78'
+      Ratelimit-Reset:
+      - '1633892400000'
+    body:
+      encoding: UTF-8
+      string: '{"page":1,"per_page":60,"total_count":0,"search_id":"432a4371-51b5-4a9b-8d46-07e99e87a1eb","data":[],"spellcheck_info":{}}'
+  recorded_at: Sun, 10 Oct 2021 18:22:17 GMT
+recorded_with: VCR 6.0.0
