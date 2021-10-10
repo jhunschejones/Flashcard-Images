@@ -290,6 +290,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 6.1.0)
   redis (~> 4.0)
+  rexml
   sass-rails (>= 6)
   selenium-webdriver
   spring
@@ -302,7 +303,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.2p107
 
 BUNDLED WITH
-   1.17.3
+   2.2.29

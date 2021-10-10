@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.2'
 
 gem 'rails', '~> 6.1.0'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -12,6 +12,7 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
 gem 'httparty'
+gem 'rexml' # included before ruby 3.x, now need to require seperately
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'lockbox'
