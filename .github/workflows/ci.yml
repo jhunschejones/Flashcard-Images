@@ -1,0 +1,63 @@
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.2'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install dependent libraries for postgres
+      run: sudo apt-get install libpq-dev
+    - name: Setup Database
+      run: bundle exec rake db:create db:migrate
+      env:
+        RAILS_ENV: test
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'yarn'
+    - name: Install with yarn
+      run: yarn install
+    - name: Run tests
+      run: bundle exec rails test
+      env:
+        UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        UNSPLASH_SECRET_KEY: ${{ secrets.UNSPLASH_SECRET_KEY }}
+        PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        FLICKR_SHARED_SECRET: ${{ secrets.FLICKR_SHARED_SECRET }}
+        FLICKR_ACCESS_TOKEN: ${{ secrets.FLICKR_ACCESS_TOKEN }}
+        FLICKR_ACCESS_SECRET: ${{ secrets.FLICKR_ACCESS_SECRET }}
+        SHUTTERSTOCK_TOKEN: ${{ secrets.SHUTTERSTOCK_TOKEN }}
+        LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
+        BLIND_INDEX_MASTER_KEY: ${{ secrets.BLIND_INDEX_MASTER_KEY }}
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
