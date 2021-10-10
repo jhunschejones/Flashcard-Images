@@ -12,7 +12,6 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
 gem 'httparty'
-gem 'rexml' # included before ruby 3.x, now need to require seperately
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'lockbox'
