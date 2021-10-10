@@ -1,5 +1,7 @@
 # Flashcard Images
 
+[![CI](https://github.com/jhunschejones/Flashcard-Images/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jhunschejones/Flashcard-Images/actions/workflows/ci.yml)
+
 ## Overview
 
 During the process of creating language learning flashcards for my Japanese studies, I discovered I was spending a large portion of my time searching for pneumonic images. In order to trick my brain a bit and speed up the process, I put together this simple image search UI that queries a handful of image providers, including Pixabay, Unsplash, Pexels, Flickr, and Shutterstock. The search endpoints are secured so that someone else can't blow through my hourly API request allotment, but other than that this is basically as straight forward as it gets.
