@@ -1,7 +1,7 @@
 module Clients
   class Pixabay < ImageClient
-    PAGE_NUMBER = 1.freeze
-    PER_PAGE_RESULT_COUNT = 60.freeze
+    PAGE_NUMBER = 1
+    PER_PAGE_RESULT_COUNT = 60
     PIXABAY_PROVIDER = "pixabay".freeze
 
     class << self

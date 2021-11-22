@@ -40,7 +40,7 @@ class ImageSearchController < ApplicationController
           Thread.new { Clients::Shutterstock.search(@query) }
         ].flat_map(&:value)
       else
-        raise UnrecognizedProvider, "#{params[:provider]}"
+        raise UnrecognizedProvider, params[:provider].to_s
       end
     flash.now[:notice] = "#{provider_message} any images for '#{@query}'" if @images.blank?
     render :index

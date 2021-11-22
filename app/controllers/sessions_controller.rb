@@ -38,8 +38,8 @@ class SessionsController < ApplicationController
         "user_id" => user_id,
         "user_email" => user_email,
         "login_time" => Time.now.to_i,
-        "success" => success,
-      },
+        "success" => success
+      }
     )
   end
 end

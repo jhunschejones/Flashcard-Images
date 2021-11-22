@@ -1,7 +1,7 @@
 module Clients
   class Unsplash < ImageClient
-    PAGE_NUMBER = 1.freeze
-    PER_PAGE_RESULT_COUNT = 30.freeze # max allowed by unsplash API
+    PAGE_NUMBER = 1
+    PER_PAGE_RESULT_COUNT = 30 # max allowed by unsplash API
     UNSPLASH_PROVIDER = "unsplash".freeze
 
     JSON_HEADERS = { "Content-Type" => "application/json", "Accept" => "application/json" }.freeze
@@ -14,13 +14,13 @@ module Clients
             query_params = {
               query: query,
               page: page,
-              per_page: result_count,
+              per_page: result_count
             }
             response = HTTParty.get(
               BASE_URI,
               headers: JSON_HEADERS.merge({
                 "Accept-Version" => "v1",
-                "Authorization" => "Client-ID #{ENV["UNSPLASH_ACCESS_KEY"]}",
+                "Authorization" => "Client-ID #{ENV["UNSPLASH_ACCESS_KEY"]}"
               }),
               query: query_params
             )

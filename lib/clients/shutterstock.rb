@@ -1,7 +1,7 @@
 module Clients
   class Shutterstock < ImageClient
-    PAGE_NUMBER = 1.freeze
-    PER_PAGE_RESULT_COUNT = 60.freeze
+    PAGE_NUMBER = 1
+    PER_PAGE_RESULT_COUNT = 60
     SHUTTERSTOCK_PROVIDER = "shutterstock".freeze
     REGION = "ja".freeze
 
@@ -14,7 +14,7 @@ module Clients
               headers: {
                 "Content-Type" => "application/json",
                 "Accept" => "application/json",
-                "Authorization" => "Bearer #{ENV["SHUTTERSTOCK_TOKEN"]}",
+                "Authorization" => "Bearer #{ENV["SHUTTERSTOCK_TOKEN"]}"
               },
               # https://api-reference.shutterstock.com/#images-search-for-images
               query: {
@@ -24,7 +24,7 @@ module Clients
                 sort: "relevance",
                 region: region,
                 keyword_safe_search: "false",
-                safe: "false",
+                safe: "false"
               }
             )
             JSON.parse(response.body).fetch("data", []).map do |image|

@@ -1,7 +1,7 @@
 module Clients
   class Pexels < ImageClient
-    PAGE_NUMBER = 1.freeze
-    PER_PAGE_RESULT_COUNT = 60.freeze
+    PAGE_NUMBER = 1
+    PER_PAGE_RESULT_COUNT = 60
     # This local returns the same results as en-US when searching in english,
     # but better results when searching in japanese.
     LOCALE = "ja-JP".freeze
